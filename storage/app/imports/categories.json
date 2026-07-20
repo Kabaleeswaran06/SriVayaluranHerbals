@@ -1,0 +1,38 @@
+[
+    {
+        "id": 1,
+        "name_en": "Herbal Oils & Thailam",
+        "name_ta": "தைலம்",
+        "image": ""
+    },
+    {
+        "id": 2,
+        "name_en": "Choornam",
+        "name_ta": "சூரணம்",
+        "image": "uploads/categories/categories_6a50954b2ba436.13011616.png"
+    },
+    {
+        "id": 3,
+        "name_en": "Tonics",
+        "name_ta": "சிரப்",
+        "image": ""
+    },
+    {
+        "id": 4,
+        "name_en": "Raw materials",
+        "name_ta": "மூலிகைப் பொருட்கள்",
+        "image": ""
+    },
+    {
+        "id": 5,
+        "name_en": "Herbal Powder",
+        "name_ta": "மூலிகைப் பொடிகள்",
+        "image": ""
+    },
+    {
+        "id": 6,
+        "name_en": "Legiyam",
+        "name_ta": "லேகியம்",
+        "image": "uploads/categories/categories_6a509851e4b9f6.53977486.jpg"
+    }
+]
