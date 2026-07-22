@@ -78,11 +78,50 @@ a{color:inherit;text-decoration:none;}
   animation:floatUp linear infinite; will-change:transform;
 }
 .leaf-particles span.alt{ background:var(--gold-light); border-radius:100% 0 100% 0; }
+.leaf-particles span.feather-eye{
+  background:none; border-radius:0;
+}
 @keyframes floatUp{
   0%{ transform:translateY(120%) rotate(0deg); opacity:0; }
   10%{ opacity:.5; }
   90%{ opacity:.45; }
   100%{ transform:translateY(-20%) rotate(360deg); opacity:0; }
+}
+
+/* ---------- Peacock signature element ---------- */
+.peacock-wrap{
+  position:absolute; z-index:1;
+  right:-2%; bottom:-6%;
+  width:min(46vw, 460px);
+  opacity:.9;
+  pointer-events:none;
+  transform-origin:bottom right;
+  animation:peacockDrift 9s ease-in-out infinite;
+}
+@keyframes peacockDrift{
+  0%,100%{ transform:translateY(0) rotate(0deg); }
+  50%{ transform:translateY(-6px) rotate(-0.6deg); }
+}
+.peacock-feather{
+  stroke:var(--gold); stroke-width:1.4; fill:none;
+  stroke-dasharray:400; stroke-dashoffset:400;
+  transform-box:fill-box; transform-origin:bottom center;
+  animation:featherOpen 1.4s var(--ease) forwards, featherSway 5.5s ease-in-out infinite;
+}
+.peacock-eye-outer{ fill:var(--turmeric); opacity:0; animation:featherFillIn .6s var(--ease) forwards; }
+.peacock-eye-inner{ fill:var(--forest-2); opacity:0; animation:featherFillIn .6s var(--ease) forwards; }
+.peacock-body{
+  fill:var(--forest-2); stroke:var(--gold); stroke-width:1.2;
+  opacity:0; animation:featherFillIn 1s var(--ease) .15s forwards;
+}
+@keyframes featherOpen{ to{ stroke-dashoffset:0; } }
+@keyframes featherFillIn{ to{ opacity:1; } }
+@keyframes featherSway{
+  0%,100%{ transform:rotate(0deg); } 50%{ transform:rotate(1.4deg); }
+}
+
+@media (max-width:760px){
+  .peacock-wrap{ width:min(70vw, 320px); right:-8%; bottom:-4%; opacity:.55; }
 }
 
 .shop-nav{
@@ -242,6 +281,50 @@ a{color:inherit;text-decoration:none;}
 <div id="progress-bar"></div>
 
 <header class="shop-header">
+
+  <div class="peacock-wrap" aria-hidden="true">
+    <svg viewBox="0 0 420 380" xmlns="http://www.w3.org/2000/svg">
+      <!-- Tail feathers, fanned from a common base point -->
+      <g>
+        <!-- Feather 1 -->
+        <path class="peacock-feather" style="animation-delay:.05s" d="M300 300 C260 220 250 140 300 60"/>
+        <circle class="peacock-eye-outer" style="animation-delay:.9s" cx="300" cy="60" r="15"/>
+        <circle class="peacock-eye-inner" style="animation-delay:1s" cx="300" cy="60" r="7"/>
+
+        <!-- Feather 2 -->
+        <path class="peacock-feather" style="animation-delay:.15s" d="M300 300 C280 210 300 120 360 55"/>
+        <circle class="peacock-eye-outer" style="animation-delay:1s" cx="360" cy="55" r="15"/>
+        <circle class="peacock-eye-inner" style="animation-delay:1.1s" cx="360" cy="55" r="7"/>
+
+        <!-- Feather 3 (center-ish) -->
+        <path class="peacock-feather" style="animation-delay:0s" d="M300 300 C300 200 335 110 340 30"/>
+        <circle class="peacock-eye-outer" style="animation-delay:.85s" cx="340" cy="30" r="16"/>
+        <circle class="peacock-eye-inner" style="animation-delay:.95s" cx="340" cy="30" r="7.5"/>
+
+        <!-- Feather 4 -->
+        <path class="peacock-feather" style="animation-delay:.25s" d="M300 300 C320 210 400 140 410 70"/>
+        <circle class="peacock-eye-outer" style="animation-delay:1.1s" cx="410" cy="70" r="14"/>
+        <circle class="peacock-eye-inner" style="animation-delay:1.2s" cx="410" cy="70" r="6.5"/>
+
+        <!-- Feather 5 -->
+        <path class="peacock-feather" style="animation-delay:.35s" d="M300 300 C230 230 190 160 210 90"/>
+        <circle class="peacock-eye-outer" style="animation-delay:1.2s" cx="210" cy="90" r="13"/>
+        <circle class="peacock-eye-inner" style="animation-delay:1.3s" cx="210" cy="90" r="6"/>
+
+        <!-- Feather 6 -->
+        <path class="peacock-feather" style="animation-delay:.2s" d="M300 300 C250 220 240 130 280 45"/>
+        <circle class="peacock-eye-outer" style="animation-delay:.95s" cx="280" cy="45" r="14"/>
+        <circle class="peacock-eye-inner" style="animation-delay:1.05s" cx="280" cy="45" r="6.5"/>
+      </g>
+
+      <!-- Body + neck + head -->
+      <path class="peacock-body" d="M300 300 C296 270 292 250 300 235 C308 220 320 218 322 232 C324 246 314 252 306 250
+        C306 250 296 260 296 300 Z"/>
+      <ellipse class="peacock-body" cx="313" cy="222" rx="9" ry="12"/>
+      <circle class="peacock-body" cx="315" cy="214" r="4.5"/>
+    </svg>
+  </div>
+
   <div class="leaf-particles" id="leafParticles"></div>
 
   <div class="container">
@@ -256,7 +339,7 @@ a{color:inherit;text-decoration:none;}
     <div class="shop-hero">
       <div class="eyebrow">Siddha &amp; Ayurvedic Herbals</div>
       <h1 class="shop-title">Shop by Category</h1>
-      <p class="shop-sub"></p>
+      <p class="shop-sub">Every jar sorted the way our shop shelves have always been — browse the same remedies, three generations in the making.</p>
     </div>
   </div>
 </header>
@@ -329,18 +412,25 @@ document.querySelectorAll('.cat-card').forEach((card, i)=>{
   card.style.transitionDelay = Math.min(i * 60, 480) + 'ms';
 });
 
-/* Ambient leaf particles in header */
+/* Ambient leaf + feather-eye particles in header */
 const particleWrap = document.getElementById('leafParticles');
+const featherSVG = `<svg viewBox="0 0 24 30" width="100%" height="100%">
+  <path d="M12 30 C6 22 6 10 12 1 C18 10 18 22 12 30 Z" fill="none" stroke="#E4C860" stroke-width="1.2"/>
+  <circle cx="12" cy="9" r="4.2" fill="#E08A1E"/>
+  <circle cx="12" cy="9" r="1.9" fill="#1F4028"/>
+</svg>`;
 if (particleWrap) {
-  for(let i=0;i<16;i++){
+  for(let i=0;i<18;i++){
+    const isFeather = i % 5 === 0; // roughly 1 in 5 particles is a feather-eye
     const leaf = document.createElement('span');
-    leaf.className = Math.random() > 0.5 ? 'alt' : '';
-    const size = 8 + Math.random()*8;
+    leaf.className = (isFeather ? 'feather-eye' : (Math.random() > 0.5 ? 'alt' : ''));
+    if (isFeather) leaf.innerHTML = featherSVG;
+    const size = isFeather ? (14 + Math.random()*6) : (8 + Math.random()*8);
     leaf.style.width = size+'px';
-    leaf.style.height = (size*1.4)+'px';
+    leaf.style.height = (size*1.25)+'px';
     leaf.style.left = Math.random()*100 + '%';
     const dur = 10 + Math.random()*10;
-    leaf.style.animationDuration = dur+'s';
+    leaf.style.animationDuration = dur+'s' + (isFeather ? ', 7s' : '');
     leaf.style.animationDelay = (Math.random()*10)+'s';
     particleWrap.appendChild(leaf);
   }
