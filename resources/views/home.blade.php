@@ -975,8 +975,8 @@ footer{ background:var(--ink); color:rgba(244,236,216,.6); padding:60px 0 24px; 
 <!-- FLOATING BUTTONS -->
 <div class="floating-btns">
   <button class="fab fab-top" id="backTop" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
-  <a class="fab fab-call" href="tel:+919876543210" aria-label="Call now"><i class="fa-solid fa-phone"></i></a>
-  <a class="fab fab-whatsapp" href="https://wa.me/919876543210" target="_blank" aria-label="WhatsApp us"><i class="fa-brands fa-whatsapp"></i></a>
+  <a class="fab fab-call" href="tel:+919942716135" aria-label="Call now"><i class="fa-solid fa-phone"></i></a>
+  <a class="fab fab-whatsapp" href="https://wa.me/919942716135" target="_blank" aria-label="WhatsApp us"><i class="fa-brands fa-whatsapp"></i></a>
 </div>
 
 <!-- CUSTOMER LOGIN MODAL (placeholder — no customer accounts built yet) -->
