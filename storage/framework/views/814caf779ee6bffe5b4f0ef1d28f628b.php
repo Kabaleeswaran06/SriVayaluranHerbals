@@ -13,8 +13,8 @@
   <div class="alert alert-success"><?php echo e(session('success')); ?></div>
 <?php endif; ?>
 
-<div class="card">
-  <table class="data-table">
+<div class="table-wrap">
+  <table>
     <thead>
       <tr>
         <th>Banner</th>

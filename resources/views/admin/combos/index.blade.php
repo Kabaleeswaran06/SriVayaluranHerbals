@@ -14,8 +14,8 @@
   <div class="alert alert-success">{{ session('success') }}</div>
 @endif
 
-<div class="card">
-  <table class="data-table">
+<div class="table-wrap">
+  <table>
     <thead>
       <tr>
         <th>Banner</th>

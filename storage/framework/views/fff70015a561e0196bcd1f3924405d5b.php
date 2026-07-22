@@ -10,14 +10,19 @@
 <link rel="stylesheet" href="<?php echo e(asset('css/admin.css')); ?>">
 </head>
 <body>
+<button type="button" class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle menu">
+  <i class="fa-solid fa-bars"></i>
+</button>
 
-<aside class="sidebar">
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+<aside class="sidebar"  id="sidebar">
   <div class="brand">
     <span>Sri Vayaluran<small>Admin Panel</small></span>
   </div>
   <nav>
     <a href="<?php echo e(route('admin.categories.index')); ?>" class="<?php echo e(request()->routeIs('admin.categories.*') ? 'active' : ''); ?>"><i class="fa-solid fa-tags"></i> Categories</a>
     <a href="<?php echo e(route('admin.products.index')); ?>" class="<?php echo e(request()->routeIs('admin.products.*') ? 'active' : ''); ?>"><i class="fa-solid fa-boxes-stacked"></i> Products</a>
+    <a href="<?php echo e(route('admin.combos.index')); ?>" class="<?php echo e(request()->routeIs('admin.combos.*') ? 'active' : ''); ?>"><i class="fa-solid fa-gift"></i> Combos pack</a>
     <a href="<?php echo e(route('admin.reviews.index')); ?>" class="<?php echo e(request()->routeIs('admin.reviews.*') ? 'active' : ''); ?>"><i class="fa-solid fa-star"></i> Reviews</a>
   </nav>
   <div class="user-box">
@@ -49,6 +54,28 @@
 
   <?php echo $__env->yieldContent('content'); ?>
 </main>
+<script>
+  const toggle = document.getElementById('sidebarToggle');
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('sidebarOverlay');
+
+  function closeSidebar() {
+    sidebar.classList.remove('open');
+    overlay.classList.remove('show');
+  }
+
+  toggle.addEventListener('click', () => {
+    sidebar.classList.toggle('open');
+    overlay.classList.toggle('show');
+  });
+
+  overlay.addEventListener('click', closeSidebar);
+
+  // Close after tapping a nav link (mobile)
+  sidebar.querySelectorAll('nav a').forEach(link => {
+    link.addEventListener('click', closeSidebar);
+  });
+</script>
 </body>
 </html>
 <?php /**PATH C:\xampp\htdocs\SriVayaluranHerbals\resources\views/layouts/admin.blade.php ENDPATH**/ ?>

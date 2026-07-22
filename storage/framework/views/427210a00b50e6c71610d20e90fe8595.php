@@ -3,10 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sri Vayaluran Herbals — Three Generations of Ayurveda</title>
+<title>Sri Vayaluran Herbals</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="icon" type="image/jpeg" href="<?php echo e(asset('images/favicon.ico')); ?>">
 <style>
 /* ============================================================
    SRI VAYALURAN HERBALS — Design tokens
@@ -134,7 +135,12 @@ header.scrolled{
 }
 nav{ display:flex; align-items:center; justify-content:space-between; }
 .logo{ display:flex; align-items:center; gap:12px; }
-.logo-mark{ width:42px; height:42px; flex-shrink:0; }
+.logo-mark{
+  width:42px; height:42px; flex-shrink:0;
+  border-radius:50%;
+  object-fit:cover;
+  border:1px solid rgba(201,162,39,.4);
+}
 .logo-text{ font-family:var(--font-display); font-size:1.18rem; color:var(--cream); letter-spacing:.03em; line-height:1.1; }
 .logo-text span{ display:block; font-family:var(--font-body); font-size:.58rem; letter-spacing:.32em; color:var(--gold); font-weight:600; margin-top:3px; }
 .nav-links{ display:flex; align-items:center; gap:38px; }
@@ -575,17 +581,14 @@ footer{ background:var(--ink); color:rgba(244,236,216,.6); padding:60px 0 24px; 
   <div class="container">
     <nav>
       <a href="#home" class="logo">
-        <svg class="logo-mark" viewBox="0 0 100 100" fill="none">
-          <circle cx="50" cy="50" r="47" stroke="#C9A227" stroke-width="2"/>
-          <path d="M50 78C50 78 30 62 30 42C30 29 39 20 50 20C61 20 70 29 70 42C70 62 50 78 50 78Z" fill="#3F6B44"/>
-          <path d="M50 78V30" stroke="#C9A227" stroke-width="1.5"/>
-        </svg>
+        <img src="<?php echo e(asset('images/logod.png')); ?>" alt="Sri Vayaluran Herbals" class="logo-mark">
         <span class="logo-text">Sri Vayaluran<span>Herbals · Est. 1918</span></span>
       </a>
       <ul class="nav-links" id="navLinks">
         <li><a href="#home">Home</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#products">Products</a></li>
+        <li><a href="shop" target="_blank">shop</a></li>
         <li><a href="#process">Our Craft</a></li>
         <li><a href="#reviews">Reviews</a></li>
         <li><a href="#contact">Contact</a></li>
@@ -605,9 +608,9 @@ footer{ background:var(--ink); color:rgba(244,236,216,.6); padding:60px 0 24px; 
   <div class="leaf-particles" id="leafParticles"></div>
   <div class="hero-grid">
     <div class="hero-content">
-      <img src="<?php echo e(asset('images/logo3.png')); ?>" alt="Sri Vayaluran Herbals" class="hero-emblem">
-      <h1>Rooted in <em>1918.</em><br>Trusted for Life.</h1>
-      <p class="hero-tagline">Three generations. One promise of purity.</p>
+      <img src="<?php echo e(asset('images/logoa.jpeg')); ?>" alt="Sri Vayaluran Herbals" class="hero-emblem">
+      <h1><em>Sri Vayaluran </em><br>Natu marundhu kadai & Ayurvedic.</h1>
+      <p class="hero-tagline">Three generations. One promise of purity <em>rooted in 1938</em></p>
       <p class="hero-desc">From my grandfather's first mortar and pestle to the shelves you browse today, Sri Vayaluran Herbals has spent over a century preparing Ayurvedic remedies the way they were meant to be made — slow, honest, and by hand.</p>
       <div class="hero-actions">
         <a href="#products" class="btn btn-gold"><i class="fa-solid fa-leaf"></i> Explore Products</a>

@@ -138,12 +138,61 @@ tbody tr:hover{ background:rgba(201,162,39,.05); }
 
 .review-text-cell{ max-width:320px; }
 
+/* ---- Mobile hamburger toggle (hidden on desktop) ---- */
+.sidebar-toggle{
+  display:none;
+  position:fixed; top:16px; left:16px; z-index:1001;
+  width:42px; height:42px; border-radius:8px;
+  background:var(--forest); color:var(--cream);
+  border:none; font-size:1.1rem; cursor:pointer;
+  box-shadow:0 8px 20px -8px rgba(0,0,0,.4);
+}
+
+.sidebar-overlay{
+  display:none;
+  position:fixed; inset:0; background:rgba(0,0,0,.45); z-index:999;
+}
+.sidebar-overlay.show{ display:block; }
+
 @media (max-width:900px){
   body{ flex-direction:column; }
-  .sidebar{ width:100%; height:auto; position:relative; flex-direction:row; align-items:center; padding:16px 20px; }
-  .sidebar .brand{ margin-bottom:0; }
-  .sidebar nav{ flex-direction:row; }
-  .sidebar .user-box{ display:none; }
-  .main{ padding:24px 18px; }
+
+  .sidebar-toggle{ display:flex; align-items:center; justify-content:center; }
+
+  .sidebar{
+    position:fixed; top:0; left:0; z-index:1000;
+    width:250px; height:100vh;
+    flex-direction:column;
+    transform:translateX(-100%);
+    transition:transform .28s ease;
+    padding:70px 20px 28px;
+  }
+  .sidebar.open{ transform:translateX(0); }
+
+  .sidebar .brand{ margin-bottom:36px; }
+  .sidebar nav{ flex-direction:column; gap:4px; }
+  .sidebar .user-box{ display:block; }
+
+  .main{ padding:70px 18px 24px; }
   .form-grid{ grid-template-columns:1fr; }
+} 
+.variant-row{ display:flex; gap:10px; align-items:center; margin-bottom:10px; flex-wrap:wrap; }
+
+/* Combo item row — sizing for its specific fields (product form's var_value/var_price already have their own rules above) */
+.combo-item-row .item-product-select{ flex:1 1 200px; }
+.combo-item-row .item-custom-name{ flex:1 1 160px; }
+.combo-item-row .item-custom-name-ta{ flex:1 1 160px; }
+.combo-item-row input[name="grams[]"]{ flex:0 1 100px; }
+.combo-item-row .remove-product{ flex-shrink:0; }
+
+@media (max-width:600px){
+  .combo-item-row .item-product-select,
+  .combo-item-row .item-custom-name,
+  .combo-item-row .item-custom-name-ta,
+  .combo-item-row input[name="grams[]"]{
+    flex:1 1 100%;
+  }
+  .combo-item-row .remove-product{
+    margin-left:auto;
+  }
 }
